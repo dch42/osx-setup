@@ -155,7 +155,7 @@ validate_config "$a" "$b" "$c"
 
 printf "\nStopping bluetooth daemon...\n"
 sudo launchctl stop com.apple.bluetoothd
-printf "\nRestarting bluetooth daemon...\n"
+printf "Restarting bluetooth daemon...\n"
 sudo launchctl start com.apple.bluetoothd
 
 #require password immediately after sleep or screen saver begins
