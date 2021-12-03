@@ -3,8 +3,18 @@
 clear
 cat fig.txt
 printf "OSX Setup Script\n\n"
-printf "This script will install various packages on your system.\n\n"
+printf "This script will install various packages on your system.\n"
+printf "It will also modify various settings. Please refer to README.md\n\n"
+
 read -p "Press 'CTRL+C' to quit, or any key to continue..."
+
+###############################################################################
+#  _                       
+# | |__  _ __ _____      __
+# | '_ \| '__/ _ \ \ /\ / /
+# | |_) | | |  __/\ V  V / 
+# |_.__/|_|  \___| \_/\_/ 
+###############################################################################
 
 printf "Checking for Homebrew 🍺 installation...\n"
 
@@ -84,3 +94,93 @@ do
 done
 
 brew cleanup
+
+###############################################################################
+#                               __ _       
+#   ___  ___    ___ ___  _ __  / _(_) __ _ 
+#  / _ \/ __|  / __/ _ \| '_ \| |_| |/ _` |
+# | (_) \__ \ | (_| (_) | | | |  _| | (_| |
+#  \___/|___/  \___\___/|_| |_|_| |_|\__, |
+#                                    |___/ 
+###############################################################################
+
+function validate_config {
+    local positive=$1
+    local action=$2
+    local check=$3
+    local config_test=$($check 2>&1)
+    if [ "$config_test" != $positive ]
+    then
+        while [ "$config_test" != $positive ]
+        do 
+            $($action)
+            config_test=$($check 2>&1)
+        done
+    else
+        printf "\e[5m\e[36m==>\e[0m $action ✅ \n\n"
+    fi
+}
+
+#enable packet filtering
+printf "\nEnabling pfctl...\n"
+sudo pfctl -e 
+
+#turn on that firewall
+printf "\nEnabling firewall...\n"
+validate_config 1 "sudo defaults write /Library/Preferences/com.apple.alf globalstate -int 1" "sudo defaults read /Library/Preferences/com.apple.alf globalstate"
+
+
+#disable remote login
+printf "\nDisabling remote login...\n"
+sudo systemsetup -setremotelogin off
+
+#disable guest login
+printf "\nDisabling guest login...\n"
+validate_config 0 "sudo defaults write /Library/Preferences/com.apple.loginwindow.plist GuestEnabled 0" "sudo defaults read /Library/Preferences/com.apple.loginwindow.plist GuestEnabled"
+
+
+#turn off bluetooth and restart daemon
+printf "\nDisabling bluetooth...\n"
+validate_config 0 "sudo defaults write /Library/Preferences/com.apple.Bluetooth ControllerPowerState -int 0" "sudo defaults read /Library/Preferences/com.apple.Bluetooth ControllerPowerState"
+sudo launchctl stop com.apple.bluetoothd
+sudo launchctl start com.apple.bluetoothd
+
+#require password immediately after sleep or screen saver begins
+printf "\nRequire password immediately upon sleep or screen saver...\n"
+sudo defaults write com.apple.screensaver askForPassword -int 1
+sudo defaults write com.apple.screensaver askForPasswordDelay -int 0
+
+#set display sleep to 10 mins
+printf "\nSet display sleep to 10 mins...\n"
+sudo pmset -a displaysleep 10
+
+#show extensions
+printf "\nShow all extensions...\n"
+sudo defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+#show status bar and path bar in finder
+sudo defaults write com.apple.finder ShowStatusBar -bool true
+sudo defaults write com.apple.finder ShowPathbar -bool true
+
+#full path in title
+sudo defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
+
+#folders on top when sorting by name
+sudo defaults write com.apple.finder _FXSortFoldersFirst -bool true
+
+#prevent photos from opening automatically when devices are plugged in
+sudo defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
+
+#don't create .ds_store on usb/network drives
+sudo defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+sudo defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+
+#no requests for time machine on new disks
+sudo defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
+
+
+
+
+
+
+

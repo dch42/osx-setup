@@ -35,3 +35,4 @@ To change what is installed, edit the package names in the `homebrew_formulae` a
 ## OSX Config
 pass
 
+There are lots of good references in mathiasbynens [dotfiles](https://github.com/mathiasbynens/dotfiles/blob/main/.macos)
