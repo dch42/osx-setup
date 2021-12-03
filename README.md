@@ -7,7 +7,7 @@ Packages and configuration settings are personal preferences, feel free to fork 
 The script will first install the [Homebrew](https://brew.sh/) package manager, if not already installed.
 
 Upon completion, it will install various packages:
-- `git` (Distributed revision control system)
+- [`git`](https://git-scm.com/) (Distributed revision control system)
 - `wget` (Internet file retriever)
 - `python` (Python)
 - `pylint` (It's not just a linter that annoys you!)
