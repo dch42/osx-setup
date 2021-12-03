@@ -22,13 +22,13 @@ Upon completion, it will install various packages:
 - [`sl`](https://github.com/mtoyoda/sl) (Prints a steam locomotive if you type sl instead of ls)
 - [`little-snitch`](https://www.obdev.at/products/littlesnitch/index.html) (Host-based application firewall) 
 - [`firefox`](https://www.mozilla.org/en-US/firefox/new/) (Web browser)
-- `gimp` (Free and open-source image editor)
-- `libreoffice` (Office suite)
-- `adium` (Instant messaging application)
-- `macfuse` (File system integration)
-- `veracrypt` (Disk encryption software focusing on security based on TrueCrypt)
-- `signal` (Instant messaging application focusing on security)
-- `visual-studio-code` (Open-source code editor)
+- [`gimp`](https://www.gimp.org/about/) (Free and open-source image editor)
+- [`libreoffice`](https://www.libreoffice.org/discover/libreoffice/) (Office suite)
+- [`adium`](https://adium.im/) (Instant messaging application)
+- [`macfuse`](https://osxfuse.github.io/) (File system integration)
+- [`veracrypt`](https://www.veracrypt.fr/en/Home.html) (Disk encryption software focusing on security based on TrueCrypt)
+- [`signal`](https://www.signal.org/) (Instant messaging application focusing on security)
+- [`visual-studio-code`](https://code.visualstudio.com/docs) (Open-source code editor)
 
 To change what is installed, edit the package names in the `homebrew_formulae` and `homebrew_casks` variables.
 
