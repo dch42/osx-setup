@@ -127,8 +127,11 @@ sudo pfctl -e
 
 #turn on that firewall
 printf "\nEnabling firewall...\n"
-validate_config 1 "sudo defaults write /Library/Preferences/com.apple.alf globalstate -int 1" "sudo defaults read /Library/Preferences/com.apple.alf globalstate"
+a=1
+b="sudo defaults write /Library/Preferences/com.apple.alf globalstate -int 1"
+c="sudo defaults read /Library/Preferences/com.apple.alf globalstate"
 
+validate_config "$a" "$b" "$c"
 
 #disable remote login
 printf "\nDisabling remote login...\n"
@@ -136,13 +139,23 @@ sudo systemsetup -setremotelogin off
 
 #disable guest login
 printf "\nDisabling guest login...\n"
-validate_config 0 "sudo defaults write /Library/Preferences/com.apple.loginwindow.plist GuestEnabled 0" "sudo defaults read /Library/Preferences/com.apple.loginwindow.plist GuestEnabled"
+a=0
+b="sudo defaults write /Library/Preferences/com.apple.loginwindow.plist GuestEnabled 0"
+c="sudo defaults read /Library/Preferences/com.apple.loginwindow.plist GuestEnabled"
 
+validate_config "$a" "$b" "$c"
 
 #turn off bluetooth and restart daemon
 printf "\nDisabling bluetooth...\n"
-validate_config 0 "sudo defaults write /Library/Preferences/com.apple.Bluetooth ControllerPowerState -int 0" "sudo defaults read /Library/Preferences/com.apple.Bluetooth ControllerPowerState"
+a=0
+b="sudo defaults write /Library/Preferences/com.apple.Bluetooth ControllerPowerState -int 0"
+c="sudo defaults read /Library/Preferences/com.apple.Bluetooth ControllerPowerState"
+
+validate_config "$a" "$b" "$c"
+
+printf "\nStopping bluetooth daemon...\n"
 sudo launchctl stop com.apple.bluetoothd
+printf "\nRestarting bluetooth daemon...\n"
 sudo launchctl start com.apple.bluetoothd
 
 #require password immediately after sleep or screen saver begins
