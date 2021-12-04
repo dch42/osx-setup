@@ -111,13 +111,15 @@ function validate_config {
     local config_test=$($check 2>&1)
     if [ "$config_test" != $positive ]
     then
-        while [ "$config_test" != $positive ]
-        do 
-            $($action)
-            config_test=$($check 2>&1)
-        done
+        $($action)
+        config_test=$($check 2>&1)
+        if [ "$config_test" = $positive ]
+        then
+            printf "\e[5m\e[36m==>\e[0m [SUCCESS] $action ✅ \n\n"
+        else
+            printf "\e[5m\e\033[91m [ERROR] $action failed ❌\n\n"
     else
-        printf "\e[5m\e[36m==>\e[0m $action ✅ \n\n"
+        printf "\e[5m\e[36m==>\e[0m [SUCCESS] $action ✅ \n\n"
     fi
 }
 
@@ -155,7 +157,7 @@ validate_config "$a" "$b" "$c"
 
 printf "\nStopping bluetooth daemon...\n"
 sudo launchctl stop com.apple.bluetoothd
-printf "Restarting bluetooth daemon...\n"
+printf "Restarting bluetooth daemon...\n\n"
 sudo launchctl start com.apple.bluetoothd
 
 #require password immediately after sleep or screen saver begins
