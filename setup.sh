@@ -88,6 +88,7 @@ printf "Disabling Homebrew analytics...\n"
 brew analytics off
 brew analytics state
 
+printf "Updating Homebrew...\n"
 brew update
 
 homebrew_formulae=(
