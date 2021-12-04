@@ -21,9 +21,9 @@ function list_all {
 }
 
 function install_all {
-    local list=("$@")
-    local install=$2
-    for i in "${list[@]}";
+    local install=$1
+    shift 1
+    for i in "$@";
         do
             printf "\nInstalling $i...\n"
             $install "$i"
@@ -309,5 +309,26 @@ b="sudo defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool t
 c="sudo defaults read com.apple.TimeMachine DoNotOfferNewDisksForBackup"
 
 validate_config "$a" "$b" "$c"
+
+###############################################################################
+#                    _         _             
+#  _ __  _   _ _ __ (_)  _ __ | | ____ _ ___ 
+# | '_ \| | | | '_ \| | | '_ \| |/ / _` / __|
+# | |_) | |_| | |_) | | | |_) |   < (_| \__ \
+# | .__/ \__, | .__/|_| | .__/|_|\_\__, |___/
+# |_|    |___/|_|       |_|        |___/   
+###############################################################################
+
+pip_packages=(
+    "tqdm"
+    "pyfiglet"
+    "pandas"
+    "numpy"
+    "beautifulsoup4"
+)
+
+printf "\nInstalling pip packages...\n"
+list_all "${pip_packages[@]}"
+install_all "pip3 install" "${pip_packages[@]}"
 
 cat done.txt
