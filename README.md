@@ -41,7 +41,7 @@ Upon completion, it will install various packages:
 - [`signal`](https://www.signal.org/) (Instant messaging application focusing on security)
 - [`visual-studio-code`](https://code.visualstudio.com/docs) (Open-source code editor)
 
-To change what is installed, edit the package names in the `homebrew_formulae` and `homebrew_casks` variables.
+To change what packages are installed, edit the package names in the `homebrew_formulae` and `homebrew_casks` variables.
 
 ## OSX Config
 The script configures various OS settings and preferences mainly using [`defaults`](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPRuntimeConfig/Articles/UserPreferences.html) and [`systemsetup`](https://ss64.com/osx/systemsetup.html).
