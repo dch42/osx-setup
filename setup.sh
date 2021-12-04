@@ -119,12 +119,12 @@ homebrew_casks=(
 )
 
 printf "\nInstalling packages...\n"
-install_all "${homebrew_formulae[@]}" "$(brew install)"
+install_all "brew install" "${homebrew_formulae[@]}"
 
 printf "\nInstalling casks...\n"
-install_all "${homebrew_casks[@]}" "$(brew install --cask)"
+install_all "brew install --cask" "${homebrew_casks[@]}"
 
-
+printf "\nCleaning up...\n"
 brew cleanup
 
 ###############################################################################
