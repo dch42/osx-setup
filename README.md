@@ -3,6 +3,17 @@ Automates setup and configuration for OSX (assuming network access is already se
 
 Packages and configuration settings are personal preferences, feel free to fork and modify as applicable. 
 
+## Usage
+Clone the repo and change to project directory:
+~~~
+git clone https://github.com/dch42/osx-setup.git && cd osx-setup
+~~~
+
+Add executable permissions to script and run: 
+~~~
+chmod +x setup.sh && ./setup.sh
+~~~
+
 ## Homebrew 🍺 
 The script will first install the [Homebrew](https://brew.sh/) package manager, if not already installed.
 
