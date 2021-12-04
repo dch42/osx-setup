@@ -10,7 +10,7 @@ Upon completion, it will install various packages:
 - [`git`](https://git-scm.com/) (Distributed revision control system)
 - [`wget`](https://www.gnu.org/software/wget/) (GNU internet file retriever)
 - [`python`](https://www.python.org/) (Python)
-- [`pylint`](https://pylint.org/) (It's not just a linter that annoys you!)
+- [`pylint`](https://pylint.org/) (Python linter)
 - [`figlet`](http://www.figlet.org/figlet_history.html) (Banner-like program prints strings as ASCII art)
 - [`magic-wormhole`](https://magic-wormhole.readthedocs.io/en/latest/welcome.html) (Securely transfers data between computers)
 - [`ffmpeg`](https://ffmpeg.org/about.html) (Play, record, convert, and stream audio and video)
@@ -33,7 +33,7 @@ Upon completion, it will install various packages:
 To change what is installed, edit the package names in the `homebrew_formulae` and `homebrew_casks` variables.
 
 ## OSX Config
-The script configures various OS settings and preferences using [`defaults`](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPRuntimeConfig/Articles/UserPreferences.html) and other commands.
+The script configures various OS settings and preferences mainly using [`defaults`](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPRuntimeConfig/Articles/UserPreferences.html) and some other commands.
 
 - enable firewall, disable remote login, disable guest login, disable bluetooth, require password on sleep/screen saver, set password delay to 0, set display sleep to 10 mins, show all file extensions, show status and path bars in finder, show folders on top when sorting by name, avoid creating .ds_store files on usb/network drives, don't prompt for time machine backup on new disks
 
