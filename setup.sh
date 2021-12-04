@@ -2,9 +2,9 @@
 
 clear
 cat fig.txt
-printf "OSX Setup Script\n\n"
-printf "This script will install various packages on your system.\n"
-printf "It will also modify various settings. Please refer to README.md\n\n"
+printf "\n\n\033[01mMac OS-X Setup Script\e[0m 🔧 \n\n"
+printf "This script will install various packages on the system.\n"
+printf "It will also modify various OS settings.\n\n"
 
 read -p "Press 'CTRL+C' to quit, or any key to continue..."
 
@@ -162,8 +162,17 @@ sudo launchctl start com.apple.bluetoothd
 
 #require password immediately after sleep or screen saver begins
 printf "\nRequire password immediately upon sleep or screen saver...\n"
-sudo defaults write com.apple.screensaver askForPassword -int 1
-sudo defaults write com.apple.screensaver askForPasswordDelay -int 0
+a=1
+b="sudo defaults write com.apple.screensaver askForPassword -int 1"
+c="sudo defaults read com.apple.screensaver askForPassword"
+
+validate_config "$a" "$b" "$c"
+
+a=0
+b="sudo defaults write com.apple.screensaver askForPasswordDelay -int 0"
+c="sudo defaults read com.apple.screensaver askForPasswordDelay"
+
+validate_config "$a" "$b" "$c"
 
 #set display sleep to 10 mins
 printf "\nSet display sleep to 10 mins...\n"
@@ -171,7 +180,11 @@ sudo pmset -a displaysleep 10
 
 #show extensions
 printf "\nShow all extensions...\n"
-sudo defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+a=1
+b="sudo defaults write NSGlobalDomain AppleShowAllExtensions -bool true"
+c="sudo defaults read NSGlobalDomain AppleShowAllExtensions"
+
+validate_config "$a" "$b" "$c"
 
 #show status bar and path bar in finder
 sudo defaults write com.apple.finder ShowStatusBar -bool true
