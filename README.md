@@ -33,6 +33,8 @@ Upon completion, it will install various packages:
 To change what is installed, edit the package names in the `homebrew_formulae` and `homebrew_casks` variables.
 
 ## OSX Config
-pass
+The script configures various OS settings and preferences using [`defaults`](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPRuntimeConfig/Articles/UserPreferences.html) and other commands.
+
+- enable firewall, disable remote login, disable guest login, disable bluetooth, require password on sleep/screen saver, set password delay to 0, set display sleep to 10 mins, show all file extensions, show status and path bars in finder, show folders on top when sorting by name, avoid creating .ds_store files on usb/network drives, don't prompt for time machine backup on new disks
 
 There are lots of good references in mathiasbynens [dotfiles](https://github.com/mathiasbynens/dotfiles/blob/main/.macos)
