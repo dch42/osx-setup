@@ -12,6 +12,25 @@ function print_border {
     printf "\n"
 }
 
+function list_all {
+    local list=("$@")
+    for i in "${list[@]}";
+        do
+            printf "==> $i\n"
+        done
+}
+
+function install_all {
+    local list=("$@")
+    local install=$2
+    for i in "${list[@]}";
+        do
+            printf "\nInstalling $i...\n"
+            $install "$i"
+            printf "\e[5m\e[36m==>\e[0m $i installed. ✅ \n\n"
+        done    
+}
+
 function validate_config {
     local positive=$1
     local action=$2
@@ -87,19 +106,6 @@ homebrew_formulae=(
     "sl"
 )
 
-printf "\nInstalling packages...\n"
-for formula in "${homebrew_formulae[@]}"
-do
-    printf "==> $formula\n"
-done
-
-for formula in "${homebrew_formulae[@]}"
-do
-    printf "\nInstalling $formula...\n"
-    brew install "$formula"
-    printf "\e[5m\e[36m==>\e[0m $formula installed. ✅ \n\n"
-done
-
 homebrew_casks=(
     "little-snitch"
     "firefox"
@@ -112,19 +118,12 @@ homebrew_casks=(
     "visual-studio-code"
 )
 
+printf "\nInstalling packages...\n"
+install_all "${homebrew_formulae[@]}" "$(brew install)"
+
 printf "\nInstalling casks...\n"
-for cask in "${homebrew_casks[@]}"
-do
-    printf "==> $cask\n"
-done
+install_all "${homebrew_casks[@]}" "$(brew install --cask)"
 
-for cask in "${homebrew_casks[@]}"
-do
-    printf "\nInstalling $cask...\n"
-    brew install --cask "$cask"
-    printf "\e[5m\e[36m==>\e[0m $cask installed. ✅ \n\n"
-
-done
 
 brew cleanup
 
@@ -258,10 +257,3 @@ c="sudo defaults read com.apple.TimeMachine DoNotOfferNewDisksForBackup"
 validate_config "$a" "$b" "$c"
 
 cat done.txt
-
-
-
-
-
-
-
