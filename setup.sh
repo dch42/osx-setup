@@ -70,62 +70,62 @@ read -p "Press 'CTRL+C' to quit, or any key to continue..."
 # |_.__/|_|  \___| \_/\_/ 
 ###############################################################################
 
-printf "Checking for Homebrew 🍺 installation...\n"
+# printf "Checking for Homebrew 🍺 installation...\n"
 
-while ! command -v brew &> /dev/null
-do
-    printf "==> Homebrew not installed. ❌\n\n"
-    printf "Installing Homebrew 🍺...\n"
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-done
+# while ! command -v brew &> /dev/null
+# do
+#     printf "==> Homebrew not installed. ❌\n\n"
+#     printf "Installing Homebrew 🍺...\n"
+#     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# done
 
-if command -v brew &> /dev/null
-then
-    printf "\e[5m\e[36m==>\e[0m Homebrew installed. ✅ \n\n"
-fi
+# if command -v brew &> /dev/null
+# then
+#     printf "\e[5m\e[36m==>\e[0m Homebrew installed. ✅ \n\n"
+# fi
 
-printf "Disabling Homebrew analytics...\n"
-brew analytics off
-brew analytics state
+# printf "Disabling Homebrew analytics...\n"
+# brew analytics off
+# brew analytics state
 
-brew update
+# brew update
 
-homebrew_formulae=(
-    "git"
-    "wget"
-    "python"
-    "pylint"
-    "figlet"
-    "magic-wormhole"
-    "ffmpeg"
-    "imagemagick"
-    "cowsay"
-    "irssi"
-    "sqlcipher"
-    "sqlite"
-    "sl"
-)
+# homebrew_formulae=(
+#     "git"
+#     "wget"
+#     "python"
+#     "pylint"
+#     "figlet"
+#     "magic-wormhole"
+#     "ffmpeg"
+#     "imagemagick"
+#     "cowsay"
+#     "irssi"
+#     "sqlcipher"
+#     "sqlite"
+#     "sl"
+# )
 
-homebrew_casks=(
-    "little-snitch"
-    "firefox"
-    "gimp"
-    "libreoffice"
-    "adium"
-    "macfuse"
-    "veracrypt"
-    "signal"
-    "visual-studio-code"
-)
+# homebrew_casks=(
+#     "little-snitch"
+#     "firefox"
+#     "gimp"
+#     "libreoffice"
+#     "adium"
+#     "macfuse"
+#     "veracrypt"
+#     "signal"
+#     "visual-studio-code"
+# )
 
-printf "\nInstalling packages...\n"
-install_all "${homebrew_formulae[@]}" "$(brew install)"
+# printf "\nInstalling packages...\n"
+# install_all "${homebrew_formulae[@]}" "$(brew install)"
 
-printf "\nInstalling casks...\n"
-install_all "${homebrew_casks[@]}" "$(brew install --cask)"
+# printf "\nInstalling casks...\n"
+# install_all "${homebrew_casks[@]}" "$(brew install --cask)"
 
 
-brew cleanup
+# brew cleanup
 
 ###############################################################################
 #                               __ _       
@@ -146,12 +146,12 @@ validate_config "$a" "$b" "$c"
 
 #disable remote login
 print_border "Disabling remote login..."
-if $(sudo systemsetup -getremotelogin) | grep "On";
+if sudo systemsetup -getremotelogin | grep "On";
 then
     sudo systemsetup -setremotelogin off && 
-    printf "\n\033[01m\033[32m[SUCCESS]\e[0m \n\e[5m\e[36m==>\e[0m'sudo systemsetup -setremotelogin off' ✅ \n\n"
+    printf "\n\033[01m\033[32m[SUCCESS]\e[0m \n\e[5m\e[36m==>\e[0m'Remote Login Off' ✅ \n\n"
 else
-    printf "\n\033[01m\033[32m[SUCCESS]\e[0m \n\e[5m\e[36m==>\e[0m Remote Login Off ✅ \n\n"
+    printf "\n\033[01m\033[32m[SUCCESS]\e[0m \n\e[5m\e[36m==>\e[0m (Already Satisfied) 'Remote Login Off' ✅ \n\n"
 fi
 
 #disable guest login
@@ -192,56 +192,61 @@ validate_config "$a" "$b" "$c"
 
 #set display sleep to 10 mins
 print_border "Set display sleep to 10 mins..."
-sudo pmset -a displaysleep 10 && 
-printf "\n\033[01m\033[32m[SUCCESS]\e[0m \n\e[5m\e[36m==>\e[0m'sudo pmset -a displaysleep 10' ✅ \n\n"
+if ! sudo systemsetup -getdisplaysleep | grep -q "after 10 minutes";
+then
+    $(sudo pmset -a displaysleep 10) && 
+    printf "\n\033[01m\033[32m[SUCCESS]\e[0m \n\e[5m\e[36m==>\e[0m 'Display Sleep: after 10 minutes' ✅ \n\n"
+else
+    printf "\n\033[01m\033[32m[SUCCESS]\e[0m \n\e[5m\e[36m==>\e[0m(Already Satisfied) 'Display Sleep: after 10 minutes' ✅ \n\n"
+fi
 
 #set computer + hdd sleep to 20 mins
 print_border "Set computer sleep to 20 mins..."
-if ! $(sudo systemsetup -getcomputersleep) | grep " after 20 minutes"
+if ! sudo systemsetup -getcomputersleep | grep -q "after 20 minutes";
 then
-    sudo systemsetup -setcomputersleep 20 && 
-    printf "\n\033[01m\033[32m[SUCCESS]\e[0m \n\e[5m\e[36m==>\e[0m'sudo systemsetup -setcomputersleep 20' ✅ \n\n"
+    $(sudo systemsetup -setcomputersleep 20) && 
+    printf "\n\033[01m\033[32m[SUCCESS]\e[0m \n\e[5m\e[36m==>\e[0m 'Computer Sleep: after 20 minutes' ✅ \n\n"
 else
-    printf "\n\033[01m\033[32m[SUCCESS]\e[0m \n\e[5m\e[36m==>\e[0m'Computer Sleep: after 20 minutes' ✅ \n\n"
+    printf "\n\033[01m\033[32m[SUCCESS]\e[0m \n\e[5m\e[36m==>\e[0m(Already Satisfied) 'Computer Sleep: after 20 minutes' ✅ \n\n"
 fi
 
 print_border "Set HDD sleep to 20 mins..."
-if ! $(sudo systemsetup -getharddisksleep) | grep "Hard Disk Sleep: after 20 minutes"
+if ! sudo systemsetup -getharddisksleep | grep -q "Hard Disk Sleep: after 20 minutes";
 then
-    sudo systemsetup -setharddisksleep 20 && 
-    printf "\n\033[01m\033[32m[SUCCESS]\e[0m \n\e[5m\e[36m==>\e[0m'sudo systemsetup -setharddisksleep 20' ✅ \n\n"
-else
+    $(sudo systemsetup -setharddisksleep 20) && 
     printf "\n\033[01m\033[32m[SUCCESS]\e[0m \n\e[5m\e[36m==>\e[0m'Hard Disk Sleep: after 20 minutes' ✅ \n\n"
+else
+    printf "\n\033[01m\033[32m[SUCCESS]\e[0m \n\e[5m\e[36m==>\e[0m'(Already Satisfied) Hard Disk Sleep: after 20 minutes' ✅ \n\n"
 fi
 
 #disable wake on network access
 print_border "Disable wake on network access..."
-if $(sudo systemsetup -getwakeonnetworkaccess) | grep "On"
+if sudo systemsetup -getwakeonnetworkaccess | grep -q "Wake On Network Access: On";
 then
     sudo systemsetup -setwakeonnetworkaccess off && 
-    printf "\n\033[01m\033[32m[SUCCESS]\e[0m \n\e[5m\e[36m==>\e[0m'sudo systemsetup -setwakeonnetworkaccess off' ✅ \n\n"
+    printf "\n\033[01m\033[32m[SUCCESS]\e[0m \n\e[5m\e[36m==>\e[0m 'Wake On Network Access: Off' ✅ \n\n"
 else
-    printf "\n\033[01m\033[32m[SUCCESS]\e[0m \n\e[5m\e[36m==>\e[0m'Wake On Network Access: Off' ✅ \n\n"
+    printf "\n\033[01m\033[32m[SUCCESS]\e[0m \n\e[5m\e[36m==>\e[0m(Already Satisfied) 'Wake On Network Access: Off' ✅ \n\n"
 fi
 
 #use network time
 print_border "Use network time..."
-if $(sudo systemsetup -getusingnetworktime) | grep "Off"
+if sudo systemsetup -getusingnetworktime | grep -q "Off";
 then
     sudo systemsetup -setusingnetworktime on && 
-    printf "\n\033[01m\033[32m[SUCCESS]\e[0m \n\e[5m\e[36m==>\e[0m'sudo systemsetup -setusingnetworktime on' ✅ \n\n"
+    printf "\n\033[01m\033[32m[SUCCESS]\e[0m \n\e[5m\e[36m==>\e[0m 'Network Time: On' ✅ \n\n"
 else
-    printf "\n\033[01m\033[32m[SUCCESS]\e[0m \n\e[5m\e[36m==>\e[0m'Network Time: On' ✅ \n\n"
+    printf "\n\033[01m\033[32m[SUCCESS]\e[0m \n\e[5m\e[36m==>\e[0m(Already Satisfied) 'Network Time: On' ✅ \n\n"
 fi
 
 #use network time
 print_border "Disable Apple remote events..."
-if $(sudo systemsetup -getremoteappleevents) | grep "On"
+if sudo systemsetup -getremoteappleevents | grep -q "On";
 then
     sudo systemsetup -setremoteappleevents off && 
-    printf "\n\033[01m\033[32m[SUCCESS]\e[0m \n\e[5m\e[36m==>\e[0m'sudo systemsetup -setremoteappleevents off' ✅ \n\n"
-else
     printf "\n\033[01m\033[32m[SUCCESS]\e[0m \n\e[5m\e[36m==>\e[0m'Remote Apple Events: Off' ✅ \n\n"
+else
+    printf "\n\033[01m\033[32m[SUCCESS]\e[0m \n\e[5m\e[36m==>\e[0m(Already Satisfied) 'Remote Apple Events: Off' ✅ \n\n"
 fi
 
 #show extensions
