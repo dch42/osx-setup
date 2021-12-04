@@ -146,12 +146,12 @@ validate_config "$a" "$b" "$c"
 
 #disable remote login
 print_border "Disabling remote login..."
-if $(sudo systemsetup -getremotelogin) | grep "On"
+if $(sudo systemsetup -getremotelogin) | grep "On";
 then
     sudo systemsetup -setremotelogin off && 
     printf "\n\033[01m\033[32m[SUCCESS]\e[0m \n\e[5m\e[36m==>\e[0m'sudo systemsetup -setremotelogin off' ✅ \n\n"
 else
-    printf "\n\033[01m\033[32m[SUCCESS]\e[0m \n\e[5m\e[36m==>\e[0m'Remote Login: Off' ✅ \n\n"
+    printf "\n\033[01m\033[32m[SUCCESS]\e[0m \n\e[5m\e[36m==>\e[0m Remote Login Off ✅ \n\n"
 fi
 
 #disable guest login
@@ -194,6 +194,55 @@ validate_config "$a" "$b" "$c"
 print_border "Set display sleep to 10 mins..."
 sudo pmset -a displaysleep 10 && 
 printf "\n\033[01m\033[32m[SUCCESS]\e[0m \n\e[5m\e[36m==>\e[0m'sudo pmset -a displaysleep 10' ✅ \n\n"
+
+#set computer + hdd sleep to 20 mins
+print_border "Set computer sleep to 20 mins..."
+if ! $(sudo systemsetup -getcomputersleep) | grep " after 20 minutes"
+then
+    sudo systemsetup -setcomputersleep 20 && 
+    printf "\n\033[01m\033[32m[SUCCESS]\e[0m \n\e[5m\e[36m==>\e[0m'sudo systemsetup -setcomputersleep 20' ✅ \n\n"
+else
+    printf "\n\033[01m\033[32m[SUCCESS]\e[0m \n\e[5m\e[36m==>\e[0m'Computer Sleep: after 20 minutes' ✅ \n\n"
+fi
+
+print_border "Set HDD sleep to 20 mins..."
+if ! $(sudo systemsetup -getharddisksleep) | grep "Hard Disk Sleep: after 20 minutes"
+then
+    sudo systemsetup -setharddisksleep 20 && 
+    printf "\n\033[01m\033[32m[SUCCESS]\e[0m \n\e[5m\e[36m==>\e[0m'sudo systemsetup -setharddisksleep 20' ✅ \n\n"
+else
+    printf "\n\033[01m\033[32m[SUCCESS]\e[0m \n\e[5m\e[36m==>\e[0m'Hard Disk Sleep: after 20 minutes' ✅ \n\n"
+fi
+
+#disable wake on network access
+print_border "Disable wake on network access..."
+if $(sudo systemsetup -getwakeonnetworkaccess) | grep "On"
+then
+    sudo systemsetup -setwakeonnetworkaccess off && 
+    printf "\n\033[01m\033[32m[SUCCESS]\e[0m \n\e[5m\e[36m==>\e[0m'sudo systemsetup -setwakeonnetworkaccess off' ✅ \n\n"
+else
+    printf "\n\033[01m\033[32m[SUCCESS]\e[0m \n\e[5m\e[36m==>\e[0m'Wake On Network Access: Off' ✅ \n\n"
+fi
+
+#use network time
+print_border "Use network time..."
+if $(sudo systemsetup -getusingnetworktime) | grep "Off"
+then
+    sudo systemsetup -setusingnetworktime on && 
+    printf "\n\033[01m\033[32m[SUCCESS]\e[0m \n\e[5m\e[36m==>\e[0m'sudo systemsetup -setusingnetworktime on' ✅ \n\n"
+else
+    printf "\n\033[01m\033[32m[SUCCESS]\e[0m \n\e[5m\e[36m==>\e[0m'Network Time: On' ✅ \n\n"
+fi
+
+#use network time
+print_border "Disable Apple remote events..."
+if $(sudo systemsetup -getremoteappleevents) | grep "On"
+then
+    sudo systemsetup -setremoteappleevents off && 
+    printf "\n\033[01m\033[32m[SUCCESS]\e[0m \n\e[5m\e[36m==>\e[0m'sudo systemsetup -setremoteappleevents off' ✅ \n\n"
+else
+    printf "\n\033[01m\033[32m[SUCCESS]\e[0m \n\e[5m\e[36m==>\e[0m'Remote Apple Events: Off' ✅ \n\n"
+fi
 
 #show extensions
 print_border "Show all file extensions..."
