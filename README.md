@@ -1,4 +1,4 @@
-# osx-setup
+# osx_setup
 Automates setup and configuration for OSX (assuming network access is already set up).
 
 Packages and configuration settings are personal preferences, feel free to fork and modify as applicable. 
@@ -6,7 +6,7 @@ Packages and configuration settings are personal preferences, feel free to fork 
 ## Usage
 Clone the repo and change to project directory:
 ~~~
-git clone https://github.com/dch42/osx-setup.git && cd osx-setup
+git clone https://github.com/dch42/osx_setup.git && cd osx_setup
 ~~~
 
 Add executable permissions to script and run: 
