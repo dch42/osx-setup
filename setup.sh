@@ -94,6 +94,8 @@ brew update
 homebrew_formulae=(
     "git"
     "wget"
+    "coreutils"
+    "node"
     "python"
     "pylint"
     "figlet"
@@ -129,6 +131,42 @@ printf "\nCleaning up...\n"
 brew cleanup
 
 ###############################################################################
+#        _   _                       _             
+#   ___ | |_| |__   ___ _ __   _ __ | | ____ _ ___ 
+#  / _ \| __| '_ \ / _ \ '__| | '_ \| |/ / _` / __|
+# | (_) | |_| | | |  __/ |    | |_) |   < (_| \__ \
+#  \___/ \__|_| |_|\___|_|    | .__/|_|\_\__, |___/
+#                             |_|        |___/     
+###############################################################################
+
+#install x-code cli
+print_border "Installing Xcode..."
+xcode-select --install
+
+pip_packages=(
+    "tqdm"
+    "pyfiglet"
+    "pandas"
+    "numpy"
+    "beautifulsoup4"
+)
+
+printf "\nInstalling pip packages...\n"
+list_all "${pip_packages[@]}"
+install_all "pip3 install" "${pip_packages[@]}"
+
+npm_packages=(
+    "walk"
+    "eslint"
+    "prettier"
+    "musicmetadata"
+    "sqlite3"
+)
+
+printf "\nInstalling npm packages...\n"
+list_all "${npm_packages[@]}"
+install_all "npm install" "${npm_packages[@]}"
+###############################################################################
 #                               __ _       
 #   ___  ___    ___ ___  _ __  / _(_) __ _ 
 #  / _ \/ __|  / __/ _ \| '_ \| |_| |/ _` |
@@ -136,6 +174,8 @@ brew cleanup
 #  \___/|___/  \___\___/|_| |_|_| |_|\__, |
 #                                    |___/ 
 ###############################################################################
+
+
 
 #turn on that firewall
 print_border "Enabling firewall..."
@@ -311,25 +351,6 @@ c="sudo defaults read com.apple.TimeMachine DoNotOfferNewDisksForBackup"
 
 validate_config "$a" "$b" "$c"
 
-###############################################################################
-#                    _         _             
-#  _ __  _   _ _ __ (_)  _ __ | | ____ _ ___ 
-# | '_ \| | | | '_ \| | | '_ \| |/ / _` / __|
-# | |_) | |_| | |_) | | | |_) |   < (_| \__ \
-# | .__/ \__, | .__/|_| | .__/|_|\_\__, |___/
-# |_|    |___/|_|       |_|        |___/   
-###############################################################################
 
-pip_packages=(
-    "tqdm"
-    "pyfiglet"
-    "pandas"
-    "numpy"
-    "beautifulsoup4"
-)
-
-printf "\nInstalling pip packages...\n"
-list_all "${pip_packages[@]}"
-install_all "pip3 install" "${pip_packages[@]}"
 
 cat done.txt
