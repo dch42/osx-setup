@@ -47,7 +47,7 @@ To change what packages are installed, edit the package names in the `homebrew_f
 
 ## Other Packages
 ### Xcode
-The script will install Xcode Command Line Tools.
+The script will install [Xcode Command Line Tools](https://developer.apple.com/library/archive/technotes/tn2339/_index.html#//apple_ref/doc/uid/DTS40014588-CH1-WHAT_IS_THE_COMMAND_LINE_TOOLS_PACKAGE_).
 
 ### Pip Packages
 The script will also install some useful python packages:
@@ -57,6 +57,8 @@ The script will also install some useful python packages:
 - [`numpy`](https://numpy.org/)
 - [`beautifulsoup4`](https://beautiful-soup-4.readthedocs.io/en/latest/)
 
+Packages can be modified by editing the `pip_packages` variable.
+
 ### NPM Packages
 ...and some useful node modules:
 - [`walk`](https://www.npmjs.com/package/walk)
@@ -64,6 +66,8 @@ The script will also install some useful python packages:
 - [`prettier`](https://www.npmjs.com/package/prettier)
 - [`musicmetadata`](https://www.npmjs.com/package/musicmetadata)
 - [`sqlite3`](https://www.npmjs.com/package/sqlite3)
+
+Packages can be modified by editing the `npm_packages` variable.
 
 ## OSX Config 
 The script configures various OS settings and preferences mainly using [`defaults`](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPRuntimeConfig/Articles/UserPreferences.html) and [`systemsetup`](https://ss64.com/osx/systemsetup.html).
