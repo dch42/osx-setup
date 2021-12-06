@@ -1,4 +1,4 @@
-# osx_setup
+# osx-setup
 Automates setup and configuration for OSX (assuming network access is already set up).
 
 Packages and configuration settings are personal preferences, feel free to fork and modify as applicable. 
@@ -6,7 +6,7 @@ Packages and configuration settings are personal preferences, feel free to fork 
 ## Usage
 Clone the repo and change to project directory:
 ~~~
-git clone https://github.com/dch42/osx_setup.git && cd osx_setup
+git clone https://github.com/dch42/osx-setup.git && cd osx-setup
 ~~~
 
 Add executable permissions to script and run: 
@@ -20,6 +20,8 @@ The script will first install the [Homebrew](https://brew.sh/) package manager, 
 Upon completion, it will install various packages:
 - [`git`](https://git-scm.com/) (Distributed revision control system)
 - [`wget`](https://www.gnu.org/software/wget/) (GNU internet file retriever)
+- [`coreutils`](https://www.gnu.org/software/coreutils/coreutils.html) (GNU File, Shell, and Text utilities)
+- [`node`](https://nodejs.org/en/about/) (Node.js & NPM)
 - [`python`](https://www.python.org/) (Python)
 - [`pylint`](https://pylint.org/) (Python linter)
 - [`figlet`](http://www.figlet.org/figlet_history.html) (Banner-like program prints strings as ASCII art)
@@ -43,6 +45,26 @@ Upon completion, it will install various packages:
 
 To change what packages are installed, edit the package names in the `homebrew_formulae` and `homebrew_casks` variables.
 
+## Other Packages
+### Xcode
+The script will install Xcode Command Line Tools.
+
+### Pip Packages
+The script will also install some useful python packages:
+- [`tqdm`](https://tqdm.github.io/)
+- [`pyfiglet`](https://github.com/pwaller/pyfiglet)
+- [`pandas`](https://pandas.pydata.org)
+- [`numpy`](https://numpy.org/)
+- [`beautifulsoup4`](https://beautiful-soup-4.readthedocs.io/en/latest/)
+
+### NPM Packages
+...and some useful node modules:
+- [`walk`](https://www.npmjs.com/package/walk)
+- [`eslint`](https://www.npmjs.com/package/eslint)
+- [`prettier`](https://www.npmjs.com/package/prettier)
+- [`musicmetadata`](https://www.npmjs.com/package/musicmetadata)
+- [`sqlite3`](https://www.npmjs.com/package/sqlite3)
+
 ## OSX Config 
 The script configures various OS settings and preferences mainly using [`defaults`](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPRuntimeConfig/Articles/UserPreferences.html) and [`systemsetup`](https://ss64.com/osx/systemsetup.html).
 
@@ -50,10 +72,3 @@ The script configures various OS settings and preferences mainly using [`default
 
 The script will verify the success of configuration changes by reading values with `defaults read` or piping command output to `grep`.
 
-## Python Packages
-The script will also install some useful python modules with `pip3`:
-- [`tqdm`](https://tqdm.github.io/)
-- [`pyfiglet`](https://github.com/pwaller/pyfiglet)
-- [`pandas`](https://pandas.pydata.org)
-- [`numpy`](https://numpy.org/)
-- [`beautifulsoup4`](https://beautiful-soup-4.readthedocs.io/en/latest/)
