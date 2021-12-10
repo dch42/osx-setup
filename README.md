@@ -69,7 +69,7 @@ The script will also install some useful python packages:
 - [`musicmetadata`](https://www.npmjs.com/package/musicmetadata)
 - [`sqlite3`](https://www.npmjs.com/package/sqlite3)
 
-Packages can be modified by editing the `npm_packages` variable.
+*Packages can be modified by editing the `npm_packages` variable.*
 
 ## OSX Config 
 The script configures various OS settings and preferences mainly using [`defaults`](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPRuntimeConfig/Articles/UserPreferences.html) and [`systemsetup`](https://ss64.com/osx/systemsetup.html).
