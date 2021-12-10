@@ -1,7 +1,9 @@
 # osx-setup
-Automates setup and configuration for OSX (assuming network access is already set up).
+Automates OS-X setup and configuration.
 
 Packages and configuration settings are personal preferences, feel free to fork and modify as applicable. 
+
+Written with High Sierra in mind, but most of the script will probably work with other releases as well.
 
 ## Usage
 Clone the repo and change to project directory:
