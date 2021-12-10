@@ -94,4 +94,4 @@ The script will verify the success of configuration changes by reading values wi
 - avoid creating .ds_store files on usb/network drives
 - don't prompt for time machine backup on new disks
 
-Takes heavy inspiration from [osx-config-check](https://github.com/kristovatlas/osx-config-check) and Mathias Bynens' [dotfiles](https://github.com/mathiasbynens/dotfiles).
+Takes heavy inspiration from Kristov Atlas' [osx-config-check](https://github.com/kristovatlas/osx-config-check) and Mathias Bynens' [dotfiles](https://github.com/mathiasbynens/dotfiles).
