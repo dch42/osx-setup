@@ -74,7 +74,24 @@ Packages can be modified by editing the `npm_packages` variable.
 ## OSX Config 
 The script configures various OS settings and preferences mainly using [`defaults`](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPRuntimeConfig/Articles/UserPreferences.html) and [`systemsetup`](https://ss64.com/osx/systemsetup.html).
 
-- enable firewall, disable remote login, disable guest login, disable bluetooth, require password on sleep/screen saver, set password delay to 0, set display sleep to 10 mins, enable network time, set hdd sleep 20 mins, set computer sleep 20 mins, don't wake on network access, disable remote apple events, show all file extensions, show status and path bars in finder, show folders on top when sorting by name, avoid creating .ds_store files on usb/network drives, don't prompt for time machine backup on new disks
-
 The script will verify the success of configuration changes by reading values with `defaults read` or piping command output to `grep`.
 
+- enable firewall
+- disable remote login
+- disable guest login
+- disable bluetooth
+- require password on sleep/screen saver
+- set password delay to 0
+- set display sleep to 10 mins
+- enable network time
+- set hdd sleep 20 mins
+- set computer sleep 20 mins
+- don't wake on network access
+- disable remote apple events
+- show all file extensions
+- show status and path bars in finder
+- show folders on top when sorting by name
+- avoid creating .ds_store files on usb/network drives
+- don't prompt for time machine backup on new disks
+
+Takes heavy inspiration from [osx-config-check](https://github.com/kristovatlas/osx-config-check) and Mathias Bynens' [dotfiles](https://github.com/mathiasbynens/dotfiles).
