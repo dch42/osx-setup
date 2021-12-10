@@ -45,7 +45,7 @@ Upon completion, it will install various packages:
 - [`signal`](https://www.signal.org/) (Instant messaging application focusing on security)
 - [`visual-studio-code`](https://code.visualstudio.com/docs) (Open-source code editor)
 
-To change what packages are installed, edit the package names in the `homebrew_formulae` and `homebrew_casks` variables.
+*To change what packages are installed, edit the package names in the `homebrew_formulae` and `homebrew_casks` variables.*
 
 ## Other Packages
 ### Xcode
@@ -59,7 +59,7 @@ The script will also install some useful python packages:
 - [`numpy`](https://numpy.org/)
 - [`beautifulsoup4`](https://beautiful-soup-4.readthedocs.io/en/latest/)
 
-Packages can be modified by editing the `pip_packages` variable.
+*Packages can be modified by editing the `pip_packages` variable.*
 
 ### NPM Packages
 ...and some useful node modules:
