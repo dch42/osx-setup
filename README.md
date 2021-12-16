@@ -93,5 +93,6 @@ The script will verify the success of configuration changes by reading values wi
 - show folders on top when sorting by name
 - avoid creating .ds_store files on usb/network drives
 - don't prompt for time machine backup on new disks
+- disable mail send/reply animations 
 
 Takes heavy inspiration from Kristov Atlas' [osx-config-check](https://github.com/kristovatlas/osx-config-check) and Mathias Bynens' [dotfiles](https://github.com/mathiasbynens/dotfiles).
