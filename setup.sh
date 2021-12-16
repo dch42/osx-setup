@@ -351,6 +351,20 @@ c="sudo defaults read com.apple.TimeMachine DoNotOfferNewDisksForBackup"
 
 validate_config "$a" "$b" "$c"
 
+#no requests for time machine on new disks
+print_border "Disable mail animations..."
+a=1
+b="defaults write com.apple.mail DisableReplyAnimations -bool true"
+c="defaults read com.apple.mail DisableReplyAnimations"
+
+validate_config "$a" "$b" "$c"
+
+a=1
+b="defaults write com.apple.mail DisableSendAnimations -bool true"
+c="defaults read com.apple.mail DisableSendAnimations"
+
+validate_config "$a" "$b" "$c"
+
 
 
 cat done.txt
