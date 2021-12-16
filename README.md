@@ -77,6 +77,7 @@ The script configures various OS settings and preferences mainly using [`default
 The script will verify the success of configuration changes by reading values with `defaults read` or piping command output to `grep`.
 
 - enable firewall
+- enable stealth mode
 - disable remote login
 - disable guest login
 - disable bluetooth
