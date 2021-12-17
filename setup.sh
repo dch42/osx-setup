@@ -69,7 +69,17 @@ read -p "Press 'CTRL+C' to quit, or any key to continue..."
 # | |_) | | |  __/\ V  V / 
 # |_.__/|_|  \___| \_/\_/ 
 ###############################################################################
-
+#check internet connection
+printf "\n\nChecking for network connection...\n\n"
+ping -c 1 -q google.com >& /dev/null
+if [ "$?" = 0 ]
+then 
+    printf "\e[5m\e[36m==>\e[0m Connected to network. ✅ \n\n"
+else
+    printf "\e[5m\e[36m==>\e[0m No network connection. ❌ \n"
+    printf "Please check connection and retry later\n."
+    exit 1
+fi
 printf "Checking for Homebrew 🍺 installation...\n"
 
 while ! command -v brew &> /dev/null
