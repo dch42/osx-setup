@@ -17,7 +17,7 @@ chmod +x setup.sh && ./setup.sh
 ~~~
 
 ## Homebrew 🍺 
-The script will first install the [Homebrew](https://brew.sh/) package manager, if not already installed.
+The script will first check that the device is connected to the internet, and install the [Homebrew](https://brew.sh/) package manager if not already installed.
 
 Upon completion, it will install various packages:
 - [`git`](https://git-scm.com/) (Distributed revision control system)
