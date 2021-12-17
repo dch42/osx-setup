@@ -1,4 +1,4 @@
-# osx-setup
+# osx_setup
 Automates OS-X setup and configuration.
 
 Packages and configuration settings are personal preferences, feel free to fork and modify as applicable. 
@@ -8,7 +8,7 @@ Written with High Sierra in mind, but most of the script will probably work with
 ## Usage
 Clone the repo and change to project directory:
 ~~~
-git clone https://github.com/dch42/osx-setup.git && cd osx-setup
+git clone https://github.com/dch42/osx_setup.git && cd osx_setup
 ~~~
 
 Add executable permissions to script and run: 
