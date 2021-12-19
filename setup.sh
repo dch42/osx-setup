@@ -69,7 +69,8 @@ read -p "Press 'CTRL+C' to quit, or any key to continue..."
 # | |_) | | |  __/\ V  V / 
 # |_.__/|_|  \___| \_/\_/ 
 ###############################################################################
-#check internet connection
+
+# check internet connection
 printf "\n\nChecking for network connection...\n\n"
 ping -c 1 -q google.com >& /dev/null
 if [ "$?" = 0 ]
@@ -80,6 +81,8 @@ else
     printf "Please check connection and retry later\n."
     exit 1
 fi
+
+# install homebrew unless homebrew install exists
 printf "Checking for Homebrew 🍺 installation...\n"
 
 while ! command -v brew &> /dev/null
@@ -94,6 +97,7 @@ then
     printf "\e[5m\e[36m==>\e[0m Homebrew installed. ✅ \n\n"
 fi
 
+# disable brew analytics and update
 printf "Disabling Homebrew analytics...\n"
 brew analytics off
 brew analytics state
@@ -101,6 +105,7 @@ brew analytics state
 printf "Updating Homebrew...\n"
 brew update
 
+# install packages
 homebrew_formulae=(
     "git"
     "wget"
@@ -149,10 +154,11 @@ brew cleanup
 #                             |_|        |___/     
 ###############################################################################
 
-#install x-code cli
+# install x-code cli
 print_border "Installing Xcode..."
 xcode-select --install
 
+# install pip packages
 pip_packages=(
     "tqdm"
     "pyfiglet"
@@ -165,6 +171,7 @@ printf "\nInstalling pip packages...\n"
 list_all "${pip_packages[@]}"
 install_all "pip3 install" "${pip_packages[@]}"
 
+# install node modules
 npm_packages=(
     "walk"
     "eslint"
@@ -176,6 +183,7 @@ npm_packages=(
 printf "\nInstalling npm packages...\n"
 list_all "${npm_packages[@]}"
 install_all "npm install" "${npm_packages[@]}"
+
 ###############################################################################
 #                               __ _       
 #   ___  ___    ___ ___  _ __  / _(_) __ _ 
@@ -184,8 +192,6 @@ install_all "npm install" "${npm_packages[@]}"
 #  \___/|___/  \___\___/|_| |_|_| |_|\__, |
 #                                    |___/ 
 ###############################################################################
-
-
 
 #turn on that firewall
 print_border "Enabling firewall..."
