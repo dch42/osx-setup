@@ -26,6 +26,7 @@ Upon completion, it will install various packages:
 - [`node`](https://nodejs.org/en/about/) (Node.js & NPM)
 - [`python`](https://www.python.org/) (Python)
 - [`pylint`](https://pylint.org/) (Python linter)
+- [`geckodriver`](https://github.com/mozilla/geckodriver) (Proxy for using W3C WebDriver compatible clients to interact with Gecko-based browsers)
 - [`figlet`](http://www.figlet.org/figlet_history.html) (Banner-like program prints strings as ASCII art)
 - [`magic-wormhole`](https://magic-wormhole.readthedocs.io/en/latest/welcome.html) (Securely transfers data between computers)
 - [`ffmpeg`](https://ffmpeg.org/about.html) (Play, record, convert, and stream audio and video)

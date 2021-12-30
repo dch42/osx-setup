@@ -113,6 +113,7 @@ homebrew_formulae=(
     "node"
     "python"
     "pylint"
+    "geckodriver"
     "figlet"
     "magic-wormhole"
     "ffmpeg"
