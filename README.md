@@ -44,7 +44,7 @@ Upon completion, it will install various packages:
 - [`macfuse`](https://osxfuse.github.io/) (File system integration)
 - [`veracrypt`](https://www.veracrypt.fr/en/Home.html) (Disk encryption software focusing on security based on TrueCrypt)
 - [`signal`](https://www.signal.org/) (Instant messaging application focusing on security)
-- [`visual-studio-code`](https://code.visualstudio.com/docs) (Open-source code editor)
+- [`visual-studio-code`](https://code.visualstudio.com/docs) (Code editor)
 
 *To change what packages are installed, edit the package names in the `homebrew_formulae` and `homebrew_casks` variables.*
 
