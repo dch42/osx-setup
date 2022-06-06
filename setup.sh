@@ -109,6 +109,7 @@ brew update
 homebrew_formulae=(
     "git"
     "wget"
+    "syncthing"
     "coreutils"
     "node"
     "python"
@@ -201,6 +202,15 @@ b="sudo defaults write /Library/Preferences/com.apple.alf globalstate -int 1"
 c="sudo defaults read /Library/Preferences/com.apple.alf globalstate"
 
 validate_config "$a" "$b" "$c"
+function print_success {
+    local success_msg=$1
+    local already_satisfied=$2
+    printf "\n\033[01m\033[32m[SUCCESS]\e[0m \n\e[5m\e[36m==>\e[0m'$success_msg' ✅ \n\n"
+}
+
+#print_border "Enabling stealth mode..."
+/usr/libexec/ApplicationFirewall/socketfilterfw --getstealthmode | grep -q "enabled"
+[[ "$?" != 0 ]]  && echo "Not Enabled" || echo "Enabled"
 
 #set stealth mode (don't respond to ping)
 print_border "Enabling stealth mode..."
